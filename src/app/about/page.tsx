@@ -111,26 +111,33 @@ export default function AboutPage() {
                   className="relative group"
                 >
                   {/* Marker Tag for Year */}
-                  <div className="absolute -top-4 -left-4 z-10 -rotate-3">
-                    <span className="font-p5-marker text-persona-white text-lg bg-persona-black border-2 border-persona-white px-3 py-1 shadow-[2px_2px_0px_rgba(255,255,255,1)] group-hover:bg-persona-red group-hover:border-persona-black group-hover:text-persona-black transition-colors">
+                  <div className="absolute -top-4 -left-4 z-20 -rotate-3">
+                    <span className="font-p5-marker text-persona-white text-lg bg-persona-black border-2 border-persona-white px-3 py-1 shadow-[2px_2px_0px_rgba(255,255,255,1)] group-hover:bg-persona-red group-hover:border-persona-black group-hover:text-persona-black transition-colors inline-block">
                       {item.year}
                     </span>
                   </div>
                   
-                  {/* Education Info Block */}
-                  <div className="bg-persona-black border-4 border-persona-white p-6 pt-8 group-hover:-translate-y-1 transition-transform"
-                       style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }}>
-                    <h3 className="font-p5-block text-3xl text-persona-white tracking-widest mt-1">
-                      {item.degree}
-                    </h3>
-                    <p className="font-p3-sleek font-bold text-persona-white/70 text-lg mt-1 uppercase">
-                      {item.institution}
-                    </p>
-                    {item.description && (
-                      <p className="font-p3-sleek text-persona-white/90 mt-3 border-t-2 border-persona-white/20 pt-3">
-                        {item.description}
+                  {/* Education Info Block - Fixed borders */}
+                  <div className="relative group-hover:-translate-y-1 transition-transform mt-2">
+                    {/* Outer Border Layer (White) */}
+                    <div className="absolute inset-0 bg-persona-white" style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }} />
+                    {/* Inner Background Layer (Black) */}
+                    <div className="absolute inset-[4px] bg-persona-black" style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }} />
+                    
+                    {/* Text Content inside the shape */}
+                    <div className="relative z-10 p-6 pt-8">
+                      <h3 className="font-p5-block text-3xl text-persona-white tracking-widest mt-1">
+                        {item.degree}
+                      </h3>
+                      <p className="font-p3-sleek font-bold text-persona-white/70 text-lg mt-1 uppercase">
+                        {item.institution}
                       </p>
-                    )}
+                      {item.description && (
+                        <p className="font-p3-sleek text-persona-white/90 mt-3 border-t-2 border-persona-white/20 pt-3">
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -143,7 +150,7 @@ export default function AboutPage() {
               Arsenal
             </h2>
             <motion.div
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-4"
               variants={containerVariants}
             >
               {skills.map((skill, index) => (
@@ -152,14 +159,18 @@ export default function AboutPage() {
                   variants={itemVariants}
                   className="relative group cursor-default"
                 >
-                  {/* Skill Tag Shadow */}
-                  <div className="absolute inset-0 bg-persona-white translate-x-1 translate-y-1 group-hover:bg-persona-red transition-colors" 
+                  {/* Skill Tag Drop Shadow */}
+                  <div className="absolute inset-0 bg-persona-white translate-x-1.5 translate-y-1.5 group-hover:bg-persona-red group-hover:translate-x-2 group-hover:translate-y-2 transition-all" 
                        style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }} />
                   
-                  {/* Skill Tag Body */}
-                  <div className="relative bg-persona-black border-2 border-persona-white px-4 py-2 group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform"
-                       style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }}>
-                    <span className="font-p5-block text-xl tracking-wider text-persona-white">
+                  {/* Skill Tag Body - Fixed borders */}
+                  <div className="relative px-4 py-2 group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform">
+                    {/* Outer Border Layer (White) */}
+                    <div className="absolute inset-0 bg-persona-white" style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }} />
+                    {/* Inner Background Layer (Black, turns White on hover) */}
+                    <div className="absolute inset-[2px] bg-persona-black group-hover:bg-persona-white transition-colors" style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }} />
+                    
+                    <span className="relative z-10 font-p5-block text-xl tracking-wider text-persona-white group-hover:text-persona-black transition-colors block">
                       {skill}
                     </span>
                   </div>

@@ -7,9 +7,9 @@ export interface Education {
 
 export const education: Education[] = [
   {
-    year: "2020-2024",
-    institution: "Your University",
-    degree: "B.S. Computer Science",
-    description: "Relevant coursework or achievements.",
+    year: "2023-2027",
+    institution: "Bhagwan Parshuram Institute of Technology",
+    degree: "B.Tech Computer Science Engineering",
+    description: "Pursuing a Bachelor of Technology in Computer Science Engineering, with a focus on software development, algorithms, and data structures. Current CGPA: 8.5/10.",
   },
 ]

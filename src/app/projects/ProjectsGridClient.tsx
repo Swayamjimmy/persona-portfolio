@@ -12,7 +12,7 @@ export default function ProjectsGridClient({ projects }: Props) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
       {projects.map((project, index) => {
-        // Generate a slight random rotation for each card to make it look like scattered papers
+        // Generate a slight random rotation for each card
         const rotation = index % 2 === 0 ? '-rotate-1' : 'rotate-1'
         const clipShape = "polygon(2% 0, 100% 0, 98% 100%, 0 98%)"
 
@@ -26,7 +26,7 @@ export default function ProjectsGridClient({ projects }: Props) {
           >
             <Link href={`/projects/${project.slug}`} className="block relative h-full">
               
-              {/* Layer 1: The Drop Shadow (Black, turns Red on hover) */}
+              {/* Layer 1: The Drop Shadow */}
               <div 
                 className="absolute inset-0 bg-persona-white/20 translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 group-hover:bg-persona-red transition-all duration-300" 
                 style={{ clipPath: clipShape }} 
@@ -54,12 +54,13 @@ export default function ProjectsGridClient({ projects }: Props) {
                   {project.title}
                 </h2>
                 
-                <p className="font-p3-sleek font-bold text-persona-black/70 text-lg mb-6 flex-grow">
+                <p className="font-p3-sleek font-bold text-persona-black/70 text-lg mb-8 flex-grow">
                   {project.shortDescription}
                 </p>
                 
                 {/* Tech Stack Tags - Ransom Note Style */}
-                <div className="flex flex-wrap gap-2 mt-auto">
+                {/* Added pr-24 (padding-right) so the tags wrap before hitting the "OPEN" text */}
+                <div className="flex flex-wrap gap-2 mt-auto pr-24">
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
@@ -71,9 +72,10 @@ export default function ProjectsGridClient({ projects }: Props) {
                 </div>
 
                 {/* Hover Indicator */}
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-p5-block text-persona-red text-xl">
-                    EXECUTE ➔
+                {/* Changed wording and adjusted bottom spacing to align nicely with the tags */}
+                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="font-p5-block text-persona-red text-2xl">
+                    OPEN ➔
                   </span>
                 </div>
               </div>

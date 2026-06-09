@@ -1,6 +1,6 @@
-import PageTransition from "@/components/PageTransition"
+// src/app/template.tsx
 
-// Template remounts on every navigation, triggering the entrance animation
 export default function Template({ children }: { children: React.ReactNode }) {
-  return <PageTransition>{children}</PageTransition>
+  // Bypassing the PageTransition component entirely
+  return <>{children}</>
 }

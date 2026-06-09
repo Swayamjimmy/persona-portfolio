@@ -77,19 +77,29 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
               </div>
             </div>
 
-            {/* Links */}
+            {/* Links - Fixed Button Clipping */}
             <div className="mt-12 flex flex-wrap gap-6 border-t-4 border-persona-black pt-8">
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="group relative px-8 py-3 font-p5-block text-2xl uppercase inline-block">
+              
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="group relative px-10 py-4 font-p5-block text-2xl uppercase inline-flex items-center justify-center">
+                {/* Shadow Layer */}
+                <div className="absolute inset-0 bg-persona-white translate-x-1.5 translate-y-1.5 group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-hover:bg-persona-black transition-all" style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }} />
+                {/* Main Layer */}
                 <div className="absolute inset-0 bg-persona-black group-hover:bg-persona-red transition-colors" style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }} />
+                
                 <span className="relative z-10 text-persona-white">View Intel (GitHub)</span>
               </a>
               
               {project.deployUrl && (
-                <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="group relative px-8 py-3 font-p5-block text-2xl uppercase inline-block">
-                  <div className="absolute inset-0 bg-persona-white border-4 border-persona-black group-hover:bg-[#e0e0e0] transition-colors" style={{ clipPath: "polygon(0 0, 95% 0, 100% 100%, 5% 100%)" }} />
+                <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="group relative px-10 py-4 font-p5-block text-2xl uppercase inline-flex items-center justify-center">
+                  {/* Shadow Layer */}
+                  <div className="absolute inset-0 bg-persona-black translate-x-1.5 translate-y-1.5 group-hover:translate-x-2.5 group-hover:translate-y-2.5 transition-all" style={{ clipPath: "polygon(0 0, 95% 0, 100% 100%, 5% 100%)" }} />
+                  {/* Main Layer */}
+                  <div className="absolute inset-0 bg-persona-white group-hover:bg-[#e0e0e0] transition-colors" style={{ clipPath: "polygon(0 0, 95% 0, 100% 100%, 5% 100%)" }} />
+                  
                   <span className="relative z-10 text-persona-black">Infiltrate Live Site</span>
                 </a>
               )}
+
             </div>
 
           </div>
