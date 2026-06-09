@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Bebas_Neue, Permanent_Marker, Rajdhani } from "next/font/google"
 import { siteConfig } from "@/data/site"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
@@ -6,7 +7,13 @@ import LoadingScreen from "@/components/LoadingScreen"
 import CustomCursor from "@/components/CustomCursor"
 import "./globals.css"
 
-// Global metadata for SEO and social sharing
+// P5R Block Font (Massive, heavy headers)
+const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-p5r-block" })
+// P5R Jagged/Marker Font (Handwritten, chaotic notes)
+const permanentMarker = Permanent_Marker({ weight: "400", subsets: ["latin"], variable: "--font-p5r-marker" })
+// P3R Sleek Font (Futuristic, highly legible body text)
+const rajdhani = Rajdhani({ weight: ["500", "700"], subsets: ["latin"], variable: "--font-p3r-sleek" })
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.title, template: `%s | ${siteConfig.name}` },
@@ -28,17 +35,16 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 }
-// The root component that wraps every page
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-persona-black text-persona-white font-body antialiased">
+    <html lang="en" className={`${bebasNeue.variable} ${permanentMarker.variable} ${rajdhani.variable}`}>
+      <body className="bg-persona-black text-persona-white font-p3-sleek antialiased selection:bg-persona-red selection:text-persona-black">
         <Navbar />
         <main>{children}</main>
         <Footer />
         <LoadingScreen />
         <CustomCursor />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: siteConfig.name, url: siteConfig.url, sameAs: [siteConfig.links.github, siteConfig.links.linkedin], jobTitle: "Frontend Developer" }) }} />
       </body>
     </html>
   )

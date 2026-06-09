@@ -32,12 +32,12 @@ export default function Footer() {
         </div>
 
         {/* Easter Egg Trigger - the Secret Mission will wire this up */}
-        <button
+        <div
           aria-label="Hidden easter egg"
           className="text-persona-white/20 hover:text-persona-white/40 transition-colors text-sm cursor-default"
         >
             <ConfidantEasterEgg />
-        </button>
+        </div>
 
         {/* Built With note */}
         <p className="text-persona-white/40 text-sm">

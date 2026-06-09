@@ -4,25 +4,33 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 
 export default function LoadingScreen() {
-  // Safe to initialize directly from storage since this is client-only!
-  const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window !== "undefined") {
-      return !sessionStorage.getItem("persona-loading-seen")
-    }
-    return true
-  })
+  // 1. Initialize to true so the server and client match perfectly on first render
+  const [isLoading, setIsLoading] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    // If we initialized as false, do not schedule any timers
-    if (!isLoading) return
+    // 2. We are now safely on the client
+    setIsMounted(true)
 
+    // 3. Check session storage ONLY after mounting
+    const hasSeenLoading = sessionStorage.getItem("persona-loading-seen")
+    
+    if (hasSeenLoading) {
+      setIsLoading(false)
+      return
+    }
+
+    // 4. If they haven't seen it, run the timer
     const timer = setTimeout(() => {
       setIsLoading(false)
       sessionStorage.setItem("persona-loading-seen", "true")
     }, 1500)
 
     return () => clearTimeout(timer)
-  }, [isLoading])
+  }, [])
+
+  // 5. Prevent rendering the animation container until the client is ready
+  if (!isMounted) return null
 
   return (
     <AnimatePresence>
