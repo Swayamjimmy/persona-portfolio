@@ -111,6 +111,54 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+            {/* Contact Section */}
+      <section className="py-24 px-6 relative">
+        {/* Angular background shape */}
+        <div
+          className="absolute inset-0 bg-persona-red/5"
+          style={{ clipPath: "polygon(0 20%, 100% 0, 100% 100%, 0 100%)" }}
+        />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="font-heading text-4xl font-bold text-persona-white mb-6">
+            Get In Touch
+          </h2>
+
+          {/* CTA - tell hirers what you're looking for */}
+          <p className="text-persona-white/70 text-lg mb-10">
+            I&apos;m looking for frontend roles where I can build ambitious, user-facing products.
+          </p>
+
+          {/* Social link buttons with P5R angular styling */}
+          <div className="flex flex-wrap justify-center gap-6">
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-persona-dark border border-persona-red text-persona-white font-heading uppercase tracking-wider hover:bg-persona-red transition-colors"
+              style={{ clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)" }}
+            >
+              GitHub
+            </a>
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-persona-dark border border-persona-red text-persona-white font-heading uppercase tracking-wider hover:bg-persona-red transition-colors"
+              style={{ clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)" }}
+            >
+              LinkedIn
+            </a>
+            <a
+              href={`mailto:${siteConfig.links.email}`}
+              className="px-8 py-3 bg-persona-red text-persona-white font-heading uppercase tracking-wider hover:bg-red-700 transition-colors"
+              style={{ clipPath: "polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)" }}
+            >
+              Email Me
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
