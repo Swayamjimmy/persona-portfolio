@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/site"
+import ConfidantEasterEgg from "@/components/ConfidantEasterEgg"
 
 export default function Footer() {
   return (
@@ -35,7 +36,7 @@ export default function Footer() {
           aria-label="Hidden easter egg"
           className="text-persona-white/20 hover:text-persona-white/40 transition-colors text-sm cursor-default"
         >
-          \uD83C\uDCCF
+            <ConfidantEasterEgg />
         </button>
 
         {/* Built With note */}

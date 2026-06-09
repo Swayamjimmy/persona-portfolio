@@ -4,26 +4,25 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 
 export default function LoadingScreen() {
-  // Track whether the loading animation should show
-  const [isLoading, setIsLoading] = useState(true)
+  // Safe to initialize directly from storage since this is client-only!
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("persona-loading-seen")
+    }
+    return true
+  })
 
   useEffect(() => {
-    // Check if the user has already seen the loading screen this session
-    const hasSeenLoading = sessionStorage.getItem("persona-loading-seen")
+    // If we initialized as false, do not schedule any timers
+    if (!isLoading) return
 
-    if (hasSeenLoading) {
-      setIsLoading(false)
-      return
-    }
-
-    // Auto-dismiss after 1.5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false)
       sessionStorage.setItem("persona-loading-seen", "true")
     }, 1500)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [isLoading])
 
   return (
     <AnimatePresence>

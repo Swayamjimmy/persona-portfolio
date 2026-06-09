@@ -28,7 +28,7 @@ const skills = [
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen py-24 px-6">
+    <section className="min-h-screen py-24 px-6" data-section="p3r">
       {/* Split layout: Bio on the left, Education timeline on the right */}
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
         {/* Bio side with P3R blue gradient background */}

@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { siteConfig } from "@/data/site"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import LoadingScreen from "@/components/LoadingScreen"
+import CustomCursor from "@/components/CustomCursor"
 import "./globals.css"
 
 // Global metadata for SEO and social sharing
@@ -34,6 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <LoadingScreen />
+        <CustomCursor />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: siteConfig.name, url: siteConfig.url, sameAs: [siteConfig.links.github, siteConfig.links.linkedin], jobTitle: "Frontend Developer" }) }} />
       </body>
     </html>
