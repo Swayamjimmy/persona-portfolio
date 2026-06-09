@@ -4,40 +4,33 @@ import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "motion/react"
 
 export default function CustomCursor() {
-  // Track whether the cursor is hovering an interactive element
   const [isHovering, setIsHovering] = useState(false)
-  // Track the current color based on page section
-  const [cursorColor, setCursorColor] = useState("#FF0000")
+  const [isVisible, setIsVisible] = useState(false)
 
-  // Motion values for smooth cursor position
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  // Apply spring physics so the cursor trails slightly behind the mouse
-  const springX = useSpring(mouseX, { stiffness: 300, damping: 30 })
-  const springY = useSpring(mouseY, { stiffness: 300, damping: 30 })
+  const springX = useSpring(mouseX, {
+    stiffness: 500,
+    damping: 28,
+  })
+
+  const springY = useSpring(mouseY, {
+    stiffness: 500,
+    damping: 28,
+  })
 
   useEffect(() => {
-    // Update cursor position on mouse move
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isVisible) setIsVisible(true)
+
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
-
-      // Detect which section the cursor is in by checking element beneath
-      const element = document.elementFromPoint(e.clientX, e.clientY)
-      if (element) {
-        const section = element.closest("[data-section]")
-        if (section?.getAttribute("data-section") === "p3r") {
-          setCursorColor("#00bcd4") // P3R teal
-        } else {
-          setCursorColor("#FF0000") // P5R red
-        }
-      }
     }
 
-    // Detect hover over interactive elements
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
+
       if (
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
@@ -50,6 +43,7 @@ export default function CustomCursor() {
 
     const handleMouseOut = (e: MouseEvent) => {
       const target = e.target as HTMLElement
+
       if (
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
@@ -69,11 +63,13 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver)
       window.removeEventListener("mouseout", handleMouseOut)
     }
-  }, [mouseX, mouseY])
+  }, [mouseX, mouseY, isVisible])
+
+  if (!isVisible) return null
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full mix-blend-difference hidden md:block"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block rounded-full"
       style={{
         x: springX,
         y: springY,
@@ -81,11 +77,17 @@ export default function CustomCursor() {
         translateY: "-50%",
       }}
       animate={{
-        width: isHovering ? 40 : 12,
-        height: isHovering ? 40 : 12,
-        backgroundColor: cursorColor,
+        width: isHovering ? 48 : 12,
+        height: isHovering ? 48 : 12,
+        backgroundColor: isHovering
+          ? "rgba(0, 0, 0, 0.62)"
+          : "rgba(0, 0, 0, 1)",
       }}
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 25,
+      }}
     />
   )
 }

@@ -41,7 +41,7 @@ export default function Footer() {
 
         {/* Built With note */}
         <p className="text-persona-white/40 text-sm">
-          Built with Next.js, Tailwind CSS, and Motion.
+          Swayam Gupta
         </p>
       </div>
     </footer>

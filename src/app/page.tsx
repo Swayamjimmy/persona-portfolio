@@ -56,7 +56,7 @@ export default function HomePage() {
             {/* Tape Corner */}
             <div className="absolute -top-3 -left-3 w-8 h-8 bg-persona-black rotate-12" />
             <p className="font-p5-marker text-persona-black text-2xl md:text-3xl tracking-widest mt-1">
-              Frontend Developer
+              Software Developer
             </p>
           </motion.div>
 
@@ -96,7 +96,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-persona-white translate-x-1.5 translate-y-1.5 group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-hover:bg-persona-black transition-all" style={{ clipPath: "polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)" }} />
               <div className="absolute inset-0 bg-persona-black group-hover:bg-persona-red transition-colors" style={{ clipPath: "polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)" }} />
               <span className="relative z-10 transition-colors duration-300 group-hover:text-persona-black">
-                View Targets
+                View Projects
               </span>
             </Link>
 
@@ -107,7 +107,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-persona-black translate-x-1.5 translate-y-1.5 group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-hover:bg-persona-red transition-all" style={{ clipPath: "polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)" }} />
               <div className="absolute inset-0 bg-persona-white group-hover:bg-[#e0e0e0] transition-colors" style={{ clipPath: "polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)" }} />
               <span className="relative z-10 transition-colors duration-300">
-                Read Dossier
+                Read Resume
               </span>
             </Link>
           </motion.div>
@@ -131,9 +131,9 @@ export default function HomePage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { title: "Frontend", description: "Building responsive, highly interactive web applications with React and Next.js.", rotation: "-rotate-2" },
-            { title: "Animation", description: "Creating fluid, purposeful motion that guides users and breaks the grid.", rotation: "rotate-1" },
-            { title: "Systems", description: "Crafting scalable component libraries and integrating complex backend APIs.", rotation: "-rotate-1" },
+            { title: "Backend", description: "Building responsive, highly interactive web applications with React and Next.js.", rotation: "-rotate-2" },
+            { title: "AI", description: "Creating fluid, purposeful motion that guides users and breaks the grid.", rotation: "rotate-1" },
+            { title: "Devops", description: "Crafting scalable component libraries and integrating complex backend APIs.", rotation: "-rotate-1" },
           ].map((item, index) => (
             <motion.div
               key={item.title}

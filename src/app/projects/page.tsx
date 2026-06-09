@@ -28,7 +28,7 @@ export default function ProjectsPage() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-16 -rotate-2 inline-block">
           <h1 className="font-p5-block text-7xl md:text-8xl text-stroke-p5 uppercase tracking-wider">
-            Infiltration Targets
+            Projects
           </h1>
           <div className="h-2 w-3/4 bg-persona-white mt-2 shadow-[4px_4px_0px_rgba(255,0,0,1)]" />
         </div>
