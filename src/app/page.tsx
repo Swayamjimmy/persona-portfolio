@@ -115,7 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= ARSENAL SECTION ================= */}
-      <section className="py-32 px-6 max-w-6xl mx-auto relative">
+      <section className="py-32 px-6 max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -164,12 +164,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= CONTACT SECTION ================= */}
-      <section className="py-40 px-6 relative overflow-hidden bg-persona-black">
-        {/* Subtle Background Halftone */}
+      {/* ================= FIXED SECTION DIVIDER (INFINITE MARQUEE) ================= */}
+      {/* Expanded the container, cleared negative collapse properties, and made text cycle endlessly */}
+      <div className="relative w-full h-48 md:h-64 flex items-center justify-center overflow-hidden z-20 pointer-events-none my-12">
+        {/* Deep Red Background Ribbon - Static Layout Layer */}
         <div 
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(var(--color-persona-white) 15%, transparent 15%)", backgroundSize: "12px 12px" }}
+          className="absolute w-[140%] h-20 bg-persona-red -rotate-3 shadow-[0_0_25px_rgba(255,0,0,0.4)] border-y-4 border-persona-black"
+        />
+        
+        {/* White Warning Tape Ribbon - Overlaps as a cross section */}
+        <div 
+          className="absolute w-[140%] h-14 bg-persona-white rotate-2 border-y-4 border-persona-black flex items-center shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-hidden"
+        >
+          {/* Framer motion loop tracks endlessly across x axis */}
+          <motion.div 
+            animate={{ x: ["0%", "-33.33%"] }}
+            transition={{ ease: "linear", duration: 18, repeat: Infinity }}
+            className="flex whitespace-nowrap font-p5-block text-3xl text-persona-black tracking-widest uppercase items-center"
+          >
+            <span className="pr-4">/// RESTRICTED AREA /// SECURITY BREACH /// DETOUR REQUIRED /// INFILTRATION IN PROGRESS </span>
+            <span className="pr-4">/// RESTRICTED AREA /// SECURITY BREACH /// DETOUR REQUIRED /// INFILTRATION IN PROGRESS </span>
+            <span className="pr-4">/// RESTRICTED AREA /// SECURITY BREACH /// DETOUR REQUIRED /// INFILTRATION IN PROGRESS </span>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ================= CONTACT SECTION ================= */}
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden bg-persona-black z-10">
+        {/* Subtle Background Halftone (Extension Safe Utility) */}
+        <div 
+          className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(var(--color-persona-white)_15%,transparent_15%)] bg-[length:12px_12px]"
         />
         
         <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
@@ -190,7 +214,7 @@ export default function HomePage() {
             Ready to steal the show?
           </p>
 
-          {/* Contact Links - Upgraded to Layered Blocks */}
+          {/* Contact Links */}
           <div className="flex flex-wrap justify-center gap-8">
             <a
               href={siteConfig.links.github}
