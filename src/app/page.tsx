@@ -165,18 +165,17 @@ export default function HomePage() {
       </section>
 
       {/* ================= FIXED SECTION DIVIDER (INFINITE MARQUEE) ================= */}
-      {/* Expanded the container, cleared negative collapse properties, and made text cycle endlessly */}
-      <div className="relative w-full h-48 md:h-64 flex items-center justify-center overflow-hidden z-20 pointer-events-none my-12">
-        {/* Deep Red Background Ribbon - Static Layout Layer */}
+      {/* Pushed the margin to the top only, removing the bottom gap */}
+      <div className="relative w-full h-48 md:h-64 flex items-center justify-center overflow-hidden z-20 pointer-events-none mt-12 md:mt-24">
+        {/* Deep Red Background Ribbon */}
         <div 
           className="absolute w-[140%] h-20 bg-persona-red -rotate-3 shadow-[0_0_25px_rgba(255,0,0,0.4)] border-y-4 border-persona-black"
         />
         
-        {/* White Warning Tape Ribbon - Overlaps as a cross section */}
+        {/* White Warning Tape Ribbon */}
         <div 
           className="absolute w-[140%] h-14 bg-persona-white rotate-2 border-y-4 border-persona-black flex items-center shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-hidden"
         >
-          {/* Framer motion loop tracks endlessly across x axis */}
           <motion.div 
             animate={{ x: ["0%", "-33.33%"] }}
             transition={{ ease: "linear", duration: 18, repeat: Infinity }}
@@ -190,8 +189,9 @@ export default function HomePage() {
       </div>
 
       {/* ================= CONTACT SECTION ================= */}
-      <section className="py-24 md:py-32 px-6 relative overflow-hidden bg-persona-black z-10">
-        {/* Subtle Background Halftone (Extension Safe Utility) */}
+      {/* Negative top margin pulls this section UP behind the police tape, hiding the seam */}
+      <section className="pt-24 md:pt-32 pb-24 md:pb-32 px-6 relative overflow-hidden bg-persona-black z-10 -mt-16 md:-mt-24">
+        {/* Dots background - now perfectly contained below the tape */}
         <div 
           className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(var(--color-persona-white)_15%,transparent_15%)] bg-[length:12px_12px]"
         />

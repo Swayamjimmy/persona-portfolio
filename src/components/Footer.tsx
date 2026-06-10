@@ -3,7 +3,7 @@ import ConfidantEasterEgg from "@/components/ConfidantEasterEgg"
 
 export default function Footer() {
   return (
-    <footer className="relative pt-24 pb-12 px-6 bg-persona-black overflow-hidden mt-20">
+    <footer className="relative pt-24 pb-12 px-6 bg-persona-black overflow-hidden">
       {/* 
         Jagged Top Border / Slashes 
         These two layered polygons create an aggressive, chaotic cut dividing the footer from the page.
