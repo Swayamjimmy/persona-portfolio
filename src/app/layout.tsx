@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${permanentMarker.variable} ${rajdhani.variable}`}>
+    <html lang="en" className={`${bebasNeue.variable} ${permanentMarker.variable} ${rajdhani.variable}`} suppressHydrationWarning>
       <body className="bg-persona-black text-persona-white font-p3-sleek antialiased selection:bg-persona-red selection:text-persona-black">
         <Navbar />
         <main>{children}</main>

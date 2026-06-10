@@ -4,24 +4,24 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 
 export default function LoadingScreen() {
+  // Always initialize to true for initial server-side hydration matching
   const [isLoading, setIsLoading] = useState(true)
   const [playExitAnimation, setPlayExitAnimation] = useState(true)
 
   useEffect(() => {
-    // We are safely on the client now, React has hydrated
     const hasSeenLoading = sessionStorage.getItem("persona-loading-seen")
     
     if (hasSeenLoading) {
-      // Returning user: Delete the component immediately (the CSS already hid it, so no flash!)
       setPlayExitAnimation(false)
       setIsLoading(false)
       return
     }
 
-    // New user: Let the timer run
     const timer = setTimeout(() => {
       setIsLoading(false)
       sessionStorage.setItem("persona-loading-seen", "true")
+      // Clean up the optical display class when the loading sequence officially ends
+      document.documentElement.classList.remove("show-persona-loader")
     }, 2000)
 
     return () => clearTimeout(timer)
@@ -30,24 +30,33 @@ export default function LoadingScreen() {
   return (
     <>
       {/* 
-        This script runs synchronously BEFORE the page paints. 
-        If the user has been here before, it adds a class to the HTML tag that instantly hides the loader using CSS.
+        THE INVERTED OPT-IN RULE:
+        This runs instantly before the DOM paints. It will ONLY append the class 
+        if the user is entirely new. If they are an active session (or hitting a 404),
+        the class is skipped entirely.
       */}
       <script
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: `
-            if (typeof window !== 'undefined' && window.sessionStorage && sessionStorage.getItem('persona-loading-seen')) {
-              document.documentElement.classList.add('hide-persona-loader');
+            if (typeof window !== 'undefined' && window.sessionStorage && !sessionStorage.getItem('persona-loading-seen')) {
+              document.documentElement.classList.add('show-persona-loader');
             }
           `
         }}
       />
       
-      {/* The CSS rule that guarantees the loader is invisible if the script found the session token */}
+      {/* 
+        FAIL-SAFE STRUCTURAL CSS:
+        The component is completely dead and hidden by default. It requires the explicit 
+        presence of .show-persona-loader on the html node to take up layout space.
+      */}
       <style suppressHydrationWarning>{`
-        .hide-persona-loader #persona-global-loader {
+        #persona-global-loader {
           display: none !important;
+        }
+        .show-persona-loader #persona-global-loader {
+          display: flex !important;
         }
       `}</style>
 
@@ -69,8 +78,7 @@ export default function LoadingScreen() {
           >
             {/* Background Halftone Pattern */}
             <div 
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{ backgroundImage: "radial-gradient(var(--color-persona-white) 15%, transparent 15%)", backgroundSize: "16px 16px" }}
+              className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(var(--color-persona-white)_15%,transparent_15%)] bg-[length:16px_16px]"
             />
 
             {/* Aggressive Red Background Slice */}
@@ -122,7 +130,7 @@ export default function LoadingScreen() {
               </div>
             </div>
             
-            {/* Bottom Right "Now Loading" Indicator */}
+            {/* Now Loading Indicator */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
