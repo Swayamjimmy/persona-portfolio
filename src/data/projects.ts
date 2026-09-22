@@ -14,14 +14,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "project-one",
-    title: "Your First Project",
+    slug: "unbuilt",
+    title: "Unbuilt",
     shortDescription: "A brief, compelling one-liner about this project.",
     fullDescription: "A detailed explanation of what this project does and why it exists.",
     challenge: "Describe the problem you were solving.",
     solution: "Describe your approach and what you learned.",
     techStack: ["React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/project-one",
+    githubUrl: "https://github.com/Swayamjimmy/Unbuilt",
     deployUrl: "https://project-one.vercel.app",
     imageUrl: "/images/projects/project-one.png",
     featured: true,

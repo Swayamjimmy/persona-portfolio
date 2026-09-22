@@ -123,6 +123,12 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-persona-white" style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }} />
                     {/* Inner Background Layer (Black) */}
                     <div className="absolute inset-[4px] bg-persona-black" style={{ clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)" }} />
+
+                      <div className="absolute -top-4 right-3 z-30 rotate-2">
+                        <span className="font-p5-marker text-persona-black text-base bg-persona-white border-2 border-persona-black px-3 py-1 shadow-[3px_3px_0px_rgba(255,0,0,1)] inline-block">
+                          CGPA: {item.cgpa}
+                        </span>
+                      </div>
                     
                     {/* Text Content inside the shape */}
                     <div className="relative z-10 p-6 pt-8">
