@@ -20,7 +20,7 @@ const itemVariants = {
 const skills = [
   "React", "TypeScript", "Next.js", "Tailwind CSS",
   "Node.js", "Python", "Git", "Docker",
-  "PostgreSQL", "REST APIs", "GraphQL", "CI/CD",
+  "PostgreSQL", "REST APIs", "CI/CD", "AWS", "Langgraph", "Langchain"
 ]
 
 export default function AboutPage() {

@@ -101,7 +101,7 @@ export default function HomePage() {
             </Link>
 
             <Link
-              href="/about"
+              href="/resume"
               className="group relative px-10 py-5 font-p5-block text-3xl uppercase tracking-wider text-persona-black transition-transform hover:scale-110 hover:rotate-3 inline-flex items-center justify-center"
             >
               <div className="absolute inset-0 bg-persona-black translate-x-1.5 translate-y-1.5 group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-hover:bg-persona-red transition-all" style={{ clipPath: "polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)" }} />

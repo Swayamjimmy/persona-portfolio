@@ -11,6 +11,6 @@ export const education: Education[] = [
     institution: "Bhagwan Parshuram Institute of Technology",
     degree: "B.Tech Computer Science Engineering",
     cgpa : "8.5",
-    description: "Pursuing a Bachelor of Technology in Computer Science Engineering, with a focus on software development, algorithms, and data structures. Current CGPA: 8.5/10.",
+    description: "Pursuing a Bachelor of Technology in Computer Science Engineering, with a focus on software development, algorithms, and data structures.",
   },
 ]

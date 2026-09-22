@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Swayam Gupta",
   title: "Swayam Gupta | Developer Portfolio",
-  description: "Software Developer specializing in Python and Go, focused on building reliable and scalable systems.",
+  description: "Software Developer focused on building reliable and scalable systems, specializing in Backend, DevOps and Artificial Intelligence",
   url: "https://swayamgupta.vercel.app",
   ogImage: "/og-default.png",
   links: {
