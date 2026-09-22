@@ -3,6 +3,7 @@ export interface Education {
   institution: string
   degree: string
   description?: string
+  cgpa : string
 }
 
 export const education: Education[] = [
