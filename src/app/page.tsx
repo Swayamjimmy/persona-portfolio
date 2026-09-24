@@ -131,9 +131,9 @@ export default function HomePage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { title: "Backend", description: "Building responsive, highly interactive web applications with React and Next.js.", rotation: "-rotate-2" },
-            { title: "AI", description: "Creating fluid, purposeful motion that guides users and breaks the grid.", rotation: "rotate-1" },
-            { title: "Devops", description: "Crafting scalable component libraries and integrating complex backend APIs.", rotation: "-rotate-1" },
+            { title: "Backend", description: "Building scalable APIs, robust server-side systems, and data driven backends.", rotation: "-rotate-2" },
+            { title: "AI", description: "Building intelligent applications with LLMs, RAG pipelines, LangChain, LangGraph and Python", rotation: "rotate-1" },
+            { title: "Devops", description: "Deploying and operating reliable systems with Dockeer, Kubernentes, AWS, CI/CD, Linux, and infrastructure automation.", rotation: "-rotate-1" },
           ].map((item, index) => (
             <motion.div
               key={item.title}

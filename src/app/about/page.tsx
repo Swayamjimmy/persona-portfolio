@@ -121,8 +121,8 @@ export default function AboutPage() {
 
               <div className="space-y-6 font-p3-sleek text-lg sm:text-xl font-bold leading-relaxed">
                 <p>
-                  I'm a frontend developer who cares deeply about user
-                  experience, performance, and clean code. I build animated,
+                  I'm a software developer who cares deeply about user
+                  experience, performance, and clean code. I build
                   accessible web applications that feel as good to use as they
                   look.
                 </p>
